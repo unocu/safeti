@@ -523,9 +523,64 @@
   }
 
   function safetiShowModal() {
-    // Show waitlist modal
     const modal = document.getElementById('safeti-signup-modal');
-    if (modal) modal.style.display = 'flex';
+    if (!modal) return;
+    // Reset to form view each time
+    var formEl = document.getElementById('safeti-modal-form');
+    var successEl = document.getElementById('safeti-modal-success');
+    if (formEl) formEl.style.display = '';
+    if (successEl) successEl.style.display = 'none';
+    modal.style.display = 'flex';
+  }
+
+  // ---- Email form submission ----
+  var emailForm = document.getElementById('safeti-email-form');
+  if (emailForm) {
+    emailForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var emailInput = document.getElementById('safeti-email');
+      var submitBtn = document.getElementById('safeti-submit-btn');
+      var errorEl = document.getElementById('safeti-form-error');
+      var email = emailInput ? emailInput.value.trim() : '';
+      if (!email) return;
+
+      // Disable button while submitting
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+      }
+      if (errorEl) errorEl.style.display = 'none';
+
+      // Post to Google Form in background
+      var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdECSl1Bq25340rO6kHadmZ_9QUpX1e_eOj9oVvZgJftXo14A/formResponse';
+      var formData = new URLSearchParams();
+      formData.set('entry.326847177', email.split('@')[0]); // Name = email prefix
+      formData.set('entry.1914696198', email);
+
+      fetch(formUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData.toString()
+      }).then(function() {
+        // Show success (no-cors always resolves, even on success)
+        var formView = document.getElementById('safeti-modal-form');
+        var successView = document.getElementById('safeti-modal-success');
+        if (formView) formView.style.display = 'none';
+        if (successView) successView.style.display = '';
+      }).catch(function() {
+        // Still show success — no-cors doesn't give us error info
+        var formView = document.getElementById('safeti-modal-form');
+        var successView = document.getElementById('safeti-modal-success');
+        if (formView) formView.style.display = 'none';
+        if (successView) successView.style.display = '';
+      }).finally(function() {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download document';
+        }
+      });
+    });
   }
 
   // Modal close handlers
