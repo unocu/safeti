@@ -1020,21 +1020,27 @@
         <p style="font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-4);">No spam, ever.</p>
       </div>
 
-      <!-- Step 2: Success -->
+      <!-- Step 2: Success + Download -->
       <div id="safeti-modal-success" style="text-align:center;padding:var(--space-8);display:none;">
         <div style="width:56px;height:56px;border-radius:14px;background:#e8f5e9;display:inline-flex;align-items:center;justify-content:center;margin-bottom:var(--space-4);">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <h2 style="font-size:var(--text-xl);font-weight:700;margin-bottom:var(--space-2);">Check your inbox</h2>
-        <p style="font-size:var(--text-sm);color:var(--color-text-muted);max-width:36ch;margin-inline:auto;margin-bottom:var(--space-6);">Thanks for signing up. Document generation is coming soon &mdash; we&rsquo;ll email you when it&rsquo;s ready.</p>
-        <button onclick="document.getElementById('safeti-signup-modal').style.display='none'" class="btn-primary btn-primary--large" style="width:100%;">
-          Done
+        <h2 style="font-size:var(--text-xl);font-weight:700;margin-bottom:var(--space-2);">Your download is ready</h2>
+        <p style="font-size:var(--text-sm);color:var(--color-text-muted);max-width:36ch;margin-inline:auto;margin-bottom:var(--space-6);">Your SAFETI document has been generated.</p>
+        <button id="safeti-download-doc-btn" class="btn-primary btn-primary--large" style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download .docx
+        </button>
+        <button onclick="document.getElementById('safeti-signup-modal').style.display='none'" style="width:100%;margin-top:var(--space-3);padding:12px 24px;font-size:var(--text-sm);font-weight:600;font-family:inherit;background:transparent;color:var(--color-text-muted);border:1.5px solid var(--color-border);border-radius:12px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--color-surface)'" onmouseout="this.style.background='transparent'">
+          Close
         </button>
       </div>
 
     </div>
   </div>
 
+  <script src="https://unpkg.com/docx@8.5.0/build/index.umd.js"></script>
+  <script src="https://unpkg.com/file-saver@2.0.5/dist/FileSaver.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
