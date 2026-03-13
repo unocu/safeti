@@ -700,7 +700,7 @@ section {
   background: #fafafa;
   border: 1.5px solid transparent;
   border-radius: 24px;
-  padding: var(--space-7) var(--space-6);
+  padding: var(--space-8) var(--space-7);
   text-align: left;
   cursor: pointer;
   transition: background 0.18s cubic-bezier(0.16,1,0.3,1), border-color 0.18s cubic-bezier(0.16,1,0.3,1), box-shadow 0.18s cubic-bezier(0.16,1,0.3,1);
@@ -739,21 +739,30 @@ section {
 .safeti-type-card__icon {
   width: 48px;
   height: 48px;
-  background: var(--color-bg);
+  background: #ffffff;
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--space-1);
+  margin-bottom: var(--space-2);
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  color: #1a1a1a;
 }
 
 [data-theme="dark"] .safeti-type-card__icon {
-  background: var(--color-surface);
+  background: rgba(255,255,255,0.1);
+  color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 
 .safeti-type-card.selected .safeti-type-card__icon {
   background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] .safeti-type-card.selected .safeti-type-card__icon {
+  background: rgba(255,255,255,0.15);
+  color: #ffffff;
 }
 
 .safeti-type-card__title {
