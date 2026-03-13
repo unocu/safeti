@@ -1,0 +1,153 @@
+/* base.css — UNOCU Design System Reset & Base */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  /* --- Fonts --- */
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* --- Type Scale (fluid with clamp) --- */
+  --text-xs:   clamp(0.6875rem, 0.65rem + 0.2vw, 0.75rem);
+  --text-sm:   clamp(0.8125rem, 0.78rem + 0.2vw, 0.875rem);
+  --text-base: clamp(0.9375rem, 0.9rem + 0.25vw, 1rem);
+  --text-md:   clamp(1.0625rem, 1rem + 0.35vw, 1.125rem);
+  --text-lg:   clamp(1.1875rem, 1.1rem + 0.5vw, 1.375rem);
+  --text-xl:   clamp(1.375rem, 1.2rem + 0.9vw, 1.75rem);
+  --text-2xl:  clamp(1.75rem, 1.4rem + 1.8vw, 2.5rem);
+  --text-3xl:  clamp(2.25rem, 1.8rem + 2.5vw, 3.5rem);
+  --text-hero: clamp(3rem, 2rem + 5vw, 5.5rem);
+
+  /* --- Spacing (4px base) --- */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-14: 3.5rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-28: 7rem;
+  --space-32: 8rem;
+  --space-40: 10rem;
+
+  /* --- Radius --- */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-full: 9999px;
+
+  /* --- Transitions --- */
+  --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* --- Content widths --- */
+  --content-hero:    72ch;
+  --content-default: 65ch;
+  --content-narrow:  48ch;
+  --container-max:   1200px;
+
+  /* --- Brand accent --- */
+  --color-accent: #7B8CFF;
+  --color-accent-soft: rgba(123, 140, 255, 0.12);
+
+  /* --- LIGHT MODE (default) --- */
+  --color-bg:          #ffffff;
+  --color-surface:     #fafafa;
+  --color-surface-2:   #f4f4f5;
+  --color-border:      rgba(0,0,0,0.07);
+  --color-border-hard: rgba(0,0,0,0.14);
+  --color-text:        #0a0a0a;
+  --color-text-muted:  #6b7280;
+  --color-text-faint:  #9ca3af;
+  --color-dark-bg:     #111111;
+  --color-dark-text:   #f9f9f9;
+
+  /* Card shadow */
+  --shadow-card: 0 1px 4px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.10), 0 16px 40px rgba(0,0,0,0.07);
+  --shadow-elevated: 0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+}
+
+[data-theme="dark"] {
+  --color-bg:          #0c0c0c;
+  --color-surface:     #161616;
+  --color-surface-2:   #1e1e1e;
+  --color-border:      rgba(255,255,255,0.08);
+  --color-border-hard: rgba(255,255,255,0.15);
+  --color-text:        #f0f0f0;
+  --color-text-muted:  #8a8a9a;
+  --color-text-faint:  #5a5a6a;
+  --color-dark-bg:     #0a0a0a;
+  --color-dark-text:   #f0f0f0;
+  --shadow-card: 0 1px 4px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.2);
+  --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.4), 0 16px 40px rgba(0,0,0,0.3);
+  --shadow-elevated: 0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* ============================================================
+   GLOBAL RESET & BASE
+   ============================================================ */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  hanging-punctuation: first last;
+  scroll-padding-top: 80px;
+}
+
+body {
+  min-height: 100dvh;
+  line-height: 1.6;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
+ul[role="list"], ol[role="list"] { list-style: none; }
+input, button, textarea, select { font: inherit; color: inherit; }
+h1, h2, h3, h4, h5, h6 { text-wrap: balance; line-height: 1.1; }
+p, li, figcaption { text-wrap: pretty; }
+
+::selection {
+  background: rgba(123, 140, 255, 0.18);
+  color: var(--color-text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+button { cursor: pointer; background: none; border: none; }
+table { border-collapse: collapse; width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+}
