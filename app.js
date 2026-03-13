@@ -8,10 +8,9 @@
   const themeToggle = document.getElementById('theme-toggle');
   const html = document.documentElement;
 
-  // Check for saved theme or system preference
-  let savedTheme = null;
-  if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    html.setAttribute('data-theme', 'dark');
+  // Default to light theme; user can toggle to dark
+  if (!html.getAttribute('data-theme')) {
+    html.setAttribute('data-theme', 'light');
   }
 
   if (themeToggle) {
