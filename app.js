@@ -523,51 +523,7 @@
   }
 
   function safetiShowModal() {
-    const get = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
-    const getRadio = name => { const el = document.querySelector('[name="' + name + '"]:checked'); return el ? el.value : 'Individual'; };
-
-    // Collect all SAFETI form data into URL params
-    const params = new URLSearchParams();
-    params.set('type', safetiSelectedType || 'interest');
-    params.set('amount', get('sf-amount'));
-    params.set('inv_date', get('sf-inv-date'));
-    params.set('close_date', get('sf-close-date'));
-    params.set('discount', get('sf-discount'));
-    params.set('interest', get('sf-interest'));
-    params.set('val_cap', get('sf-val-cap'));
-    params.set('vesting', get('sf-vesting'));
-    params.set('event_date', get('sf-event-date'));
-    params.set('tge_date', get('sf-tge-date'));
-    params.set('token_count', get('sf-token-count'));
-    params.set('token_price', get('sf-token-price'));
-    params.set('token_network', get('sf-token-network'));
-    params.set('multiple', get('sf-multiple'));
-    params.set('safe_type', get('sf-safe-type'));
-    params.set('co_name', get('co-name'));
-    params.set('co_state', get('co-state'));
-    params.set('co_signer', get('co-signer'));
-    params.set('co_title', get('co-title'));
-    params.set('co_email', get('co-email'));
-    params.set('inv_name', get('inv-name'));
-    params.set('inv_type', getRadio('inv-type'));
-    params.set('inv_email', get('inv-email'));
-    params.set('inv_signer', get('inv-signer'));
-    params.set('inv_title', get('inv-title'));
-
-    // Remove empty params
-    for (const [key, val] of [...params.entries()]) {
-      if (!val) params.delete(key);
-    }
-
-    const queryStr = params.toString();
-    const appBase = 'https://app.unocu.xyz';
-
-    const signupLink = document.getElementById('safeti-signup-link');
-    const signinLink = document.getElementById('safeti-signin-link');
-    if (signupLink) signupLink.href = appBase + '/login.html?signup=1&redirect=' + encodeURIComponent('fundraise?' + queryStr);
-    if (signinLink) signinLink.href = appBase + '/login.html?redirect=' + encodeURIComponent('fundraise?' + queryStr);
-
-    // Show modal
+    // Show waitlist modal
     const modal = document.getElementById('safeti-signup-modal');
     if (modal) modal.style.display = 'flex';
   }
