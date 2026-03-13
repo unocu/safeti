@@ -1381,3 +1381,59 @@ section {
     justify-content: center;
   }
 }
+
+/* ============================================================
+   LEGAL PAGES (Privacy, Terms)
+   ============================================================ */
+.legal-content {
+  font-size: var(--text-sm);
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+.legal-content h2 {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
+}
+
+.legal-content h3 {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-3);
+}
+
+.legal-content p {
+  margin-bottom: var(--space-4);
+}
+
+.legal-content ul {
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-6);
+  list-style: disc;
+}
+
+.legal-content ul li {
+  margin-bottom: var(--space-2);
+}
+
+.legal-content a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition-interactive);
+}
+
+.legal-content a:hover {
+  color: var(--color-accent);
+}
+
+.legal-content strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
